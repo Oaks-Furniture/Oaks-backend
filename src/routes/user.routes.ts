@@ -1,0 +1,13 @@
+import express, { Request, Response } from "express";
+import { createUserHandler } from "../controller/user.controller";
+import validateResource from "../middleware/validateResource";
+import { createUserSchema } from "../schema/user.schema";
+
+const router = express.Router();
+router.post(
+  "/api/user/create",
+  validateResource(createUserSchema),
+  createUserHandler
+);
+
+export default router;
